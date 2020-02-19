@@ -4,6 +4,26 @@ const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`)
 );
 
+exports.checkID = (req, res, next, val) => {
+  if (val * 1 >= tours.length) {
+    return res.status(404).json({
+      status: 'fail',
+      messsage: 'Invalid ID'
+    });
+  }
+  next();
+};
+
+exports.checkBody = (req, res, next) => {
+  if (!req.body.name || !req.body.price) {
+    return res.status(400).json({
+      status: 'fail',
+      messsage: 'Missing name or price'
+    });
+  }
+  next();
+};
+
 exports.getAllTours = (req, res) => {
   res.status(200).json({
     status: 'Success',
@@ -14,14 +34,7 @@ exports.getAllTours = (req, res) => {
 };
 
 exports.getTour = (req, res) => {
-  const id = req.params.id * 1;
-  if (id >= tours.length) {
-    return res.status(404).json({
-      status: 'fail',
-      messsage: 'Invalid ID'
-    });
-  }
-  const tour = tours.find(e => e.id === id);
+  const tour = tours.find(e => e.id == req.params.id);
 
   res.status(200).json({
     status: 'Success',
@@ -35,12 +48,13 @@ exports.createTour = (req, res) => {
   tours.push(newTour);
 
   fs.writeFile(
-    `${__dirname}/dev-data/data/tours-simple.json`,
+    `${__dirname}/../dev-data/data/tours-simple.json`,
     JSON.stringify(tours),
     err => {
       if (err)
         res.status(404).json({
-          status: 'Fail'
+          status: 'Fail',
+          err: err
         });
       else {
         res.status(201).json({
@@ -55,13 +69,6 @@ exports.createTour = (req, res) => {
 };
 
 exports.updateTour = (req, res) => {
-  if (req.params.id * 1 >= tours.length) {
-    return res.status(404).json({
-      status: 'fail',
-      messsage: 'Invalid ID'
-    });
-  }
-
   res.status(200).json({
     status: 'success',
     data: {
@@ -71,13 +78,6 @@ exports.updateTour = (req, res) => {
 };
 
 exports.deleteTour = (req, res) => {
-  if (req.params.id * 1 >= tours.length) {
-    return res.status(404).json({
-      status: 'fail',
-      messsage: 'Invalid ID'
-    });
-  }
-
   res.status(204).json({
     status: 'success',
     data: null
