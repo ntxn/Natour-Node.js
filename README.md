@@ -13,3 +13,5 @@ A dynamic web application built to learn and experience server side web developm
           |-- tourController
           |-- userController
     - Step 3: Set up a public route as a root folder to serve static files by `app.use(express.static(`${__dirname}/public`))`;
+
+- Set up Environment Variables in `config.js` to configure the environment is devlopment/production, etc. Then link this file to the application by using the npm package called `dotenv`
