@@ -16,6 +16,9 @@ A dynamic web application built to learn and experience server side web developm
 
 - Set up Environment Variables in `config.js` to configure the environment is devlopment/production, etc. Then link this file to the application by using the npm package called `dotenv`
 
-- Create a DB on MongoDB Atlas, connect it to MongoDB Compass on desktop
-- Connect the MongoDB Atlas DB to Express App using Mongoose
-    Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node. js. It manages relationships between data, provides schema validation, and is used to translate between objects in code and the representation of those objects in MongoDB
+- MONGODB
+    - Create a DB on MongoDB Atlas, connect it to MongoDB Compass on desktop
+    - Connect the MongoDB Atlas DB to Express App using Mongoose
+        Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node. js. It manages relationships between data, provides schema validation, and is used to translate between objects in code and the representation of those objects in MongoDB
+    - Mongoose:
+        - Create schema --> create a model based on that schema --> create new document based on that model --> call .save() method to save it to DB
