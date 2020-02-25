@@ -12,6 +12,10 @@ A dynamic web application built to learn and experience server side web developm
       |-- controllers             # C in MVC: control the request from endpoints to data in local files (for now)
           |-- tourController
           |-- userController
-    - Step 3: Set up a public route as a root folder to serve static files by `app.use(express.static(`${__dirname}/public`))`;
+    - Step 3: Set up a public route as a root folder to serve static files by `app.use(express.static(```${__dirname}/public`))```;
 
 - Set up Environment Variables in `config.js` to configure the environment is devlopment/production, etc. Then link this file to the application by using the npm package called `dotenv`
+
+- Create a DB on MongoDB Atlas, connect it to MongoDB Compass on desktop
+- Connect the MongoDB Atlas DB to Express App using Mongoose
+    Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node. js. It manages relationships between data, provides schema validation, and is used to translate between objects in code and the representation of those objects in MongoDB
