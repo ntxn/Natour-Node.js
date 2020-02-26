@@ -53,4 +53,6 @@ A dynamic web application built to learn and experience server side web developm
         - Pagination
         - Alias
     
-    - Aggregation Pipeline to generate stats: Matching, Grouping, Unwinding, Projecting
+    - Aggregation Pipeline to generate stats: Matching, Grouping, Unwinding, Projecting <a href="https://github.com/ngannguyen117/Natour-Node.js/commit/0e19793f41bc2dedfa2ad80a11ba683e2027615d">0e19793f</a>
+
+    - Use Mongoose Model's Virtual Properties to do business logic in the model. (the data is not persisted, only calculated everytime the data is requested)
