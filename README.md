@@ -55,4 +55,11 @@ A dynamic web application built to learn and experience server side web developm
     
     - Aggregation Pipeline to generate stats: Matching, Grouping, Unwinding, Projecting <a href="https://github.com/ngannguyen117/Natour-Node.js/commit/0e19793f41bc2dedfa2ad80a11ba683e2027615d">0e19793f</a>
 
-    - Use Mongoose Model's Virtual Properties to do business logic in the model. (the data is not persisted, only calculated everytime the data is requested)
+    - Use Mongoose Model's Virtual Properties to do business logic in the model. (the data is not persisted, only calculated everytime the data is requested) <a href="https://github.com/ngannguyen117/Natour-Node.js/commit/0e19793f41bc2dedfa2ad80a11ba683e2027615d">0e19793f</a>
+
+    - Mongoose Middleware (Pre & Post hooks):
+        - Ex: Each time a new doc is saved to the db, a function can be run between the saved command is issued and the actual saving of the doc, or also after the actual saving
+        - 4 types: document, query, aggregate, model
+        - Document middleware: acts on the currently processed document
+        - Query middleware: allows us to run some function before and after a certain query is executed. Acts on the current query.
+        - Aggregation middleware: add hooks before and after an aggregation happens. Points to the current Aggregation object
