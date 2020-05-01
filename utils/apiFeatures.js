@@ -5,13 +5,15 @@ class APIFeatures {
   }
 
   filter() {
-    const queryObj = { ...this.queryString };
+    const queryObj = { ...this.queryString }; // make a copy: destruring req.query and then put them in an object
     const excludedFields = ['page', 'sort', 'limit', 'fields'];
-    excludedFields.forEach(e => delete queryObj[e]);
+    excludedFields.forEach((field) => delete queryObj[field]);
 
-    // 1B) Advance filtering
     let queryStr = JSON.stringify(queryObj);
-    queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, match => `$${match}`);
+    queryStr = queryStr.replace(
+      /\b(gte|gt|lte|lt)\b/g,
+      (matchStr) => `$${matchStr}`
+    );
 
     this.query = this.query.find(JSON.parse(queryStr));
 
@@ -41,7 +43,7 @@ class APIFeatures {
   }
 
   paginate() {
-    const page = this.queryString.page * 1 || 1; // multiply with 1 to convert to a number
+    const page = this.queryString.page * 1 || 1;
     const limit = this.queryString.limit * 1 || 100;
     const skip = (page - 1) * limit;
 
